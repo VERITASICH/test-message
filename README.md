@@ -13,19 +13,21 @@ A responsive travel website built with HTML, CSS, and JavaScript.
 
 ## Deployment
 
-This project is deployed on Vercel. To deploy your own version:
+This project is deployed on GitHub Pages. To deploy your own version:
 
 1. Fork this repository
-2. Create a new project on Vercel
-3. Connect your GitHub repository
-4. Deploy!
+2. Go to Settings > Pages
+3. Select the main branch as the source
+4. Click Save
+
+Your site will be available at `https://[your-username].github.io/test-message`
 
 ## Local Development
 
 1. Clone the repository
 2. Open `index.html` in your browser
 3. Make changes and test locally
-4. Push changes to GitHub to trigger automatic deployment
+4. Push changes to GitHub to update the live site
 
 ## Project Structure
 
@@ -33,10 +35,9 @@ This project is deployed on Vercel. To deploy your own version:
 ├── index.html          # Main HTML file
 ├── styles.css          # Styles
 ├── script.js           # JavaScript functionality
-├── images/             # Image assets
-│   ├── hero-bg.jpg
-│   ├── paris.jpg
-│   ├── kioto.jpg
-│   └── cape-town.jpg
-└── vercel.json         # Vercel configuration
+└── images/             # Image assets
+    ├── hero-bg.jpg
+    ├── paris.jpg
+    ├── kioto.jpg
+    └── cape-town.jpg
 ```
