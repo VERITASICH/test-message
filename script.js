@@ -1,4 +1,8 @@
+// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize animations
+    initAnimations();
+    
     // Header scroll effect
     const header = document.querySelector('.header');
     let lastScroll = 0;
@@ -52,30 +56,35 @@ document.addEventListener('DOMContentLoaded', () => {
             contactForm.reset();
         });
     }
+});
 
-    // Initialize animations for elements that should be visible on load
+// Animation initialization
+function initAnimations() {
+    // Hero content animation
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
-        heroContent.style.opacity = '1';
-        heroContent.style.transform = 'translateY(0)';
+        requestAnimationFrame(() => {
+            heroContent.style.opacity = '1';
+            heroContent.style.transform = 'translateY(0)';
+        });
     }
 
-    // Add animation to destination cards when they come into view
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
+    // Initialize Intersection Observer for scroll animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                requestAnimationFrame(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                });
             }
         });
-    }, observerOptions);
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
 
-    // Observe all destination cards
+    // Observe destination cards
     document.querySelectorAll('.destination-card').forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
@@ -87,10 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.cta-button, .submit-button');
     buttons.forEach(button => {
         button.addEventListener('mouseenter', () => {
-            button.style.transform = 'translateY(-3px)';
+            requestAnimationFrame(() => {
+                button.style.transform = 'translateY(-3px)';
+            });
         });
         button.addEventListener('mouseleave', () => {
-            button.style.transform = 'translateY(0)';
+            requestAnimationFrame(() => {
+                button.style.transform = 'translateY(0)';
+            });
         });
     });
-}); 
+} 
