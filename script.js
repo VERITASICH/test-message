@@ -53,9 +53,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Initialize animations for elements that should be visible on load
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) {
+        heroContent.style.opacity = '1';
+        heroContent.style.transform = 'translateY(0)';
+    }
+
     // Add animation to destination cards when they come into view
     const observerOptions = {
-        threshold: 0.1
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -67,10 +75,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
+    // Observe all destination cards
     document.querySelectorAll('.destination-card').forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
         card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         observer.observe(card);
+    });
+
+    // Add hover effects to buttons
+    const buttons = document.querySelectorAll('.cta-button, .submit-button');
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+            button.style.transform = 'translateY(-3px)';
+        });
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = 'translateY(0)';
+        });
     });
 }); 
